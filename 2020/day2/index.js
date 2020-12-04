@@ -37,25 +37,36 @@ function testInput_1(inputs) {
   return valid;
 }
 
-console.log(testInput_1(inputs));
+// console.log(testInput_1(inputs));
 
-// got wrong write tests?
+// got wrong write tests? No, need to actually read the problem
 function testInput_2(inputs) {
   let valid = 0;
   inputs.forEach((input) => {
     const letter = input[1][0];
     const testString = input[2];
     // test string starts at 1, not 0, so subtracting 1 to keep indices in line
-    const validated = input[0]
+    const indices = input[0]
       .split("-")
-      .map((num) => Number(num))
-      .every((idx) => testString[idx] === letter);
+      .map((num) => Number(num) - 1);
+    
+    const matches = indices.reduce((acc, idx) => {
+      if (testString[idx] === letter) {
+        acc++;
+      }
+      return acc;
+    }, 0);
 
-    if (validated) {
+    if (matches === 1) {
       valid++;
     }
   });
   return valid;
 }
+
+// 323 was wrong - matching every index
+// 683 was wrong - matching 1 or 2 of the indices
+
+// answer should be 360!
 
 console.log(testInput_2(inputs));

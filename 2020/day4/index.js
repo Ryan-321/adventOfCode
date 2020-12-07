@@ -76,10 +76,7 @@ function test(key, value) {
     case 'ecl':
       return ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(value);
     case 'pid': {
-      if (value.length !== 9) {
-        return false;
-      }
-      return true;
+      return value.length === 9;
     }
     default:
       return false;

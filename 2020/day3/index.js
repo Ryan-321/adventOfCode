@@ -25,7 +25,6 @@ console.log(check_1(input));
 
 function check_2(map, right, down) {
   let trees = 0;
-
   let pos = right;
 
   for (let i = down; i < map.length; i += down) {

@@ -1,21 +1,23 @@
 const fs = require('fs');
 // const _ = require('lodash');
 
-const passports = fs.readFileSync('./2020/day4/input.txt', 'utf-8')
+const passports = fs
+  .readFileSync('./input.txt', 'utf-8')
   .split('\n\n') // split by blank line
-  .map((str) => { // need to formant each individual passport
+  .map((str) => {
+    // need to formant each individual passport
 
-    return  str.split('\n')
-      .reduce((acc, s) => { // reduce into one object as a passport
-        s.split(' ') // attributes are split by space
-          .forEach((attr) => {
-            const [key, value] = attr.split(':');
+    return str.split('\n').reduce((acc, s) => {
+      // reduce into one object as a passport
+      s.split(' ') // attributes are split by space
+        .forEach((attr) => {
+          const [key, value] = attr.split(':');
 
-            acc[key] = value;
-          });
+          acc[key] = value;
+        });
 
-        return acc;
-      }, {});
+      return acc;
+    }, {});
   });
 
 // console.log({ passports });

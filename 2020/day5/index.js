@@ -72,12 +72,19 @@ function findSeat(letters, defaultRange) {
 assert.deepStrictEqual(findSeat('FBFBBFF', [0, 127]), 44);
 assert.deepStrictEqual(findSeat('RLR', [0, 7]), 5);
 
-const highest = boardingPasses
+const seatIdList = boardingPasses
   .map(([rowLetters, columnLetters]) => {
     const row = findSeat(rowLetters, [0, 127]);
     const column = findSeat(columnLetters, [0, 7]);
     return row * 8 + column;
   })
-  .sort((a, b) => b - a);
+  .sort((a, b) => a - b) // to get highest flip the sort and take first number in the array
+  .find((num, idx) => {
+    // this is the 2nd part - just substract one
+    // console.log(num, idx + 7);
+    if (num !== idx + 7) {
+      return true;
+    }
+  });
 
-console.log(highest[0]);
+console.log(seatIdList - 1);

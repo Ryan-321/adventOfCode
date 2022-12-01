@@ -1,7 +1,6 @@
 const fs = require('fs');
 const assert = require('assert').strict;
 
-
 //* 1st puzzle
 
 const inputs = fs.readFileSync('./2021/day1/input.txt', 'utf-8')

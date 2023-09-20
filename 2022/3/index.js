@@ -15,7 +15,7 @@ const grouped = [];
 for(let i = 0; i < input.length; i+=3) {
   grouped.push([input[i], input[i + 1], input[i + 2]]);
 }
-
+ls
 // PART TWO     ***Loop through Rucksacks grouped by 3***
 
 const result = grouped.map(([a, b, c]) => {
